@@ -1,0 +1,9 @@
+spring:
+  url: https://0c35-2001-ee0-4a4f-b920-d56b-ce47-5ad1-8bd7.ngrok-free.app/cam
+
+jwt:
+  JWT_SECRET: vuvanhoang
+  JWT_EXPIRATION: 39439483489
+
+server:
+  port: 8080
