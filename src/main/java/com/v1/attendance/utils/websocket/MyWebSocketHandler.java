@@ -13,11 +13,13 @@ import java.util.concurrent.Executors;
 public class MyWebSocketHandler extends BinaryWebSocketHandler implements WebSocketHandler {
     ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
     ExecutorService executorService = Executors.newFixedThreadPool(2);;
-    FaceRecognize faceRecognize = new FaceRecognize();
+    FaceRecognize faceRecognize;
 
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws Exception {
         byteArrayStream.write(message.getPayload().array());
+
+        faceRecognize = new FaceRecognize();
 
         if(message.isLast()){
             executorService.execute(faceRecognize);
@@ -28,8 +30,6 @@ public class MyWebSocketHandler extends BinaryWebSocketHandler implements WebSoc
             if(result != null){
                 session.sendMessage(new BinaryMessage(result.getBytes()));
 //                session.close();
-            }else{
-
             }
 
             byteArrayStream.reset();
