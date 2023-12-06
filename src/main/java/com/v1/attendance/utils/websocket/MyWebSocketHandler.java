@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class MyWebSocketHandler extends BinaryWebSocketHandler implements WebSocketHandler {
     ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
-    ExecutorService executorService = Executors.newFixedThreadPool(2);;
+    ExecutorService executorService = Executors.newFixedThreadPool(2);
     FaceRecognize faceRecognize;
 
     @Override
